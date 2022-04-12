@@ -18,6 +18,5 @@ module.exports = {
                 use: ['pug-loader']
             }
         ]
-    },
-    mode: 'development'
+    }
 }
