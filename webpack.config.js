@@ -11,5 +11,13 @@ module.exports = {
         static: path.resolve(__dirname),
         hot: true
     },
+    module: {
+        rules: [
+            {
+                test: /\.pug$/,
+                use: ['pug-loader']
+            }
+        ]
+    },
     mode: 'development'
 }
