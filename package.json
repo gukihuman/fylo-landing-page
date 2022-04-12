@@ -1,0 +1,25 @@
+{
+  "name": "fylo-landing-page-pug",
+  "version": "1.0.0",
+  "description": "![Design preview for the Fylo landing page with two column layout challenge](./design/desktop-preview.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivan-f-sokolov/fylo-landing-page-pug.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivan-f-sokolov/fylo-landing-page-pug/issues"
+  },
+  "homepage": "https://github.com/ivan-f-sokolov/fylo-landing-page-pug#readme",
+  "devDependencies": {
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1"
+  }
+}
