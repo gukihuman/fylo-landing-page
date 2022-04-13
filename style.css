@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@400;700&display=swap');
 
+:root {
+    --bright-blue: hsl(224, 93%, 58%);
+    --light-gray: hsl(0, 0%, 75%);
+}
+
 * {
     box-sizing: border-box;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -16,7 +21,7 @@ img {
 
 .container {
     padding: 4% 5%;
-    margin: 0px auto;
+    margin: 0 auto;
     max-width: 100%;
     width: 1440px;
 }
@@ -49,4 +54,53 @@ nav ul {
 nav ul a {
     color: black;
     text-decoration: none;
+}
+
+/* Forms */
+form {
+    height: 45px;
+    font-family: 'Raleway', sans-serif;
+}
+
+input {
+    height: 100%;
+    border: 1px solid;
+    border-radius: 4px;
+    padding-left: 2.5%;
+}
+
+input::placeholder {
+    color: var(--light-gray);
+}
+
+button {
+    background-color: var(--bright-blue);
+    height: 100%;
+    border: none;
+    border-radius: 4px;
+
+    color: white;
+    font-weight: 700;
+}
+
+.header-form input{
+    width: 50%;
+    margin-right: 2.5%;
+}
+
+.header-form button {
+    width: 30%;
+}
+
+.second-form {
+    padding: 0 10%;
+}
+
+.second-form input{
+    width: 100%;
+    margin-bottom: 2.5%;
+}
+
+.second-form button {
+    width: 40%;
 }
