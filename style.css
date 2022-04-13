@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 1200px;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex > div {
+    flex: 1;
+}

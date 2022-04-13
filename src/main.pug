@@ -12,10 +12,9 @@ header: .container
             h1 All your files in one secure location, accessible anywhere.
             p Fylo stores your most important files in one secure location. Access them wherever you need, share and collaborate with friends, family, and co-workers.
             form
-                input(type="text" placeholder="Enter your email...")
+                input(type="email" placeholder="Enter your email...")
                 button Get Started
-        div
-            img(src="./images/illustration-1.svg", alt="People are taking files from the big folder.")
+        div: img(src="./images/illustration-1.svg", alt="People are taking files from the big folder.")
 
 section: .container: .flex
     div
@@ -29,18 +28,17 @@ section: .container: .flex
                 img(src="./images/avatar-testimonial.jpg", alt="A portrait.")
                 h3 Kyle Burton
                 small Founder & CEO, Huddle
-    div
-        img(src="./images/illustration-2.svg", alt="People are holding paper sheets.")
+    div: img(src="./images/illustration-2.svg", alt="People are holding paper sheets.")
 
-section: .container: .flex
+section.desaturated-blue: .container: .flex
     div
         h2 Get early access today
         p It only takes a minute to sign up and our free starter tier is extremely generous. If you have any questions, our support team would be happy to help you.
-    form
+    div: form
         input(type="email" placeholder="email@example.com")
         button Get Started For Free
 
-section: .container
+section.very-dark-blue: .container
     img(src='./images/logo.svg' alt='Logo: stack of files.')
     .flex
         div: ul
@@ -58,5 +56,5 @@ section: .container
 
 footer: .container
     .flex.attribution
-        p Challenge by #[a(href="https://www.frontendmentor.io?ref=challenge" target="_blank") Frontend Mentor]
-        p Coded by #[a(href="https://github.com/ivan-f-sokolov" target="_blank") Ivan F. Sokolov]
+        div: p Challenge by #[a(href="https://www.frontendmentor.io?ref=challenge" target="_blank") Frontend Mentor]
+        div: p Coded by #[a(href="https://github.com/ivan-f-sokolov" target="_blank") Ivan F. Sokolov]
