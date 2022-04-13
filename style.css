@@ -2,7 +2,8 @@
 
 * {
     box-sizing: border-box;
-    margin: 0;
+    margin: 0px;
+    padding: 0px;
 }
 
 body {
@@ -14,16 +15,38 @@ img {
 }
 
 .container {
-    padding: 20px;
-    margin: 0 auto;
+    padding: 4% 5%;
+    margin: 0px auto;
     max-width: 100%;
-    width: 1200px;
+    width: 1440px;
 }
 
 .flex {
     display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .flex > div {
     flex: 1;
+}
+
+/* Nav */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5%;
+    font-family: 'Raleway', sans-serif;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    gap: 60px;
+}
+
+nav ul a {
+    color: black;
+    text-decoration: none;
 }
