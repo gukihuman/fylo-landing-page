@@ -127,6 +127,44 @@ header input{
     margin-bottom: 2.5%;
 }
 
+/* Testimonial */
+.testimonial {
+    background-color: white;
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
+    border-radius: 7px;
+    padding: 30px 40px;
+    margin-top: 60px;
+    width: 65%;
+}
+
+.testimonial > img {
+    width: 1.2em;
+}
+
+.testimonial p {
+    margin: 10px 0;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    width: 100%;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.user-info img {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+}
+
+.user-info small {
+    font-size: 12px;
+}
+
 /* Sections */
 body section {
     padding: 40px 0;
@@ -194,10 +232,29 @@ header .flex > div:first-child {
     align-items: baseline;
 }
 
+.attribution > .container > img {
+    width: 140px;
+    margin-bottom: 1.5em;
+}
+
+.attribution .flex div:first-child {
+    flex: 1.6;
+}
+
+.attribution .flex div:last-child {
+    flex: 1.2;
+}
+
 .attribution ul {
     display: flex;
     flex-direction: column;
     list-style-type: none;
+    gap: 1em;
+}
+
+.attribution ul li {
+    display: flex;
+    align-items: center;
     gap: 1em;
 }
 
@@ -206,40 +263,42 @@ header .flex > div:first-child {
     text-decoration: none;
 }
 
-/* Testimonial */
-.testimonial {
-    background-color: white;
-    box-shadow: 0 0 10px rgb(0, 0, 0, 0.1);
-    border-radius: 7px;
-    padding: 30px 40px;
-    margin-top: 60px;
-    width: 65%;
-}
-
-.testimonial > img {
-    width: 1.2em;
-}
-
-.testimonial p {
-    margin: 10px 0;
-    font-size: 16px;
-    letter-spacing: 0.05em;
-    width: 100%;
-}
-
-.user-info {
+.attribution .flex > div:last-child ul {
     display: flex;
-    align-items: center;
-    margin-top: 20px;
+    flex-direction: row;
 }
 
-.user-info img {
+.attribution .circle {
+    border: 1px solid white;
     border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    margin-right: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
 }
 
-.user-info small {
-    font-size: 12px;
+footer {
+    background-color: var(--desaturated-blue);
+}
+
+footer .container {
+    padding: 1em 0 1.5em;
+}
+
+footer ul {
+    display: flex;
+    justify-content: space-evenly;
+    color: var(--light-gray);
+    list-style-type: none;
+}
+
+footer ul a {
+    margin-left: 3px;
+    text-decoration: none;
+    color: white;
+    border-bottom: 1px solid white;
+    padding: 0 0 0.1em;
+    font-size: 1.1em;
+    letter-spacing: 0.02em;
 }

@@ -43,11 +43,11 @@ section.second-call: .container: .flex
         button Get Started For Free
 
 section.attribution: .container
-    img(src='./images/logo.svg' alt='Logo: stack of files.')
+    img(src='./images/logo-white.svg' alt='Logo: stack of files.')
     .flex
         div: ul
-            li Phone: +1-543-123-4567
-            li example@fylo.com
+            li #[img(src="./images/icon-phone.svg", alt="Phone icon.")] Phone: +1-543-123-4567
+            li #[img(src="./images/icon-email.svg", alt="Email icon.")] example@fylo.com
         div: ul
             li: a(href="#") About Us
             li: a(href="#") Jobs
@@ -57,7 +57,13 @@ section.attribution: .container
             li: a(href="#") Contact Us
             li: a(href="#") Terms
             li: a(href="#") Privacy
+        div: ul
+            li: a(href="#").circle: i.fab.fa-facebook-f
+            li: a(href="#").circle: i.fab.fa-twitter
+            li: a(href="#").circle: i.fab.fa-instagram
 
-footer: .container: .flex
-        div: p Challenge by #[a(href="https://www.frontendmentor.io?ref=challenge" target="_blank") Frontend Mentor]
-        div: p Coded by #[a(href="https://github.com/ivan-f-sokolov" target="_blank") Ivan F. Sokolov]
+
+footer: .container
+        ul
+            li Challenge by #[a(href="https://www.frontendmentor.io?ref=challenge" target="_blank") Frontend Mentor]
+            li Coded by #[a(href="https://github.com/ivan-f-sokolov" target="_blank") Ivan F. Sokolov]
