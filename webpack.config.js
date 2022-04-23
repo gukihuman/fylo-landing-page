@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
     entry: './src/main.js',
@@ -16,7 +16,15 @@ module.exports = {
             {
                 test: /\.pug$/,
                 use: ['pug-loader']
-            }
-        ]
-    }
-}
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader",
+                ]
+            },
+        ],
+    },
+};
