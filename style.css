@@ -19,6 +19,11 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+.resize-animation-stopper * {
+    animation: none !important;
+    transition: none !important;
+}
+
 img {
     max-width: 100%;
 }
@@ -96,7 +101,7 @@ input {
     height: 45px;
     border: 1px solid;
     border-radius: 4px;
-    padding-left: 4.5%;
+    padding-left: 15px;
 }
 
 input::placeholder {
@@ -111,11 +116,43 @@ button {
     border-radius: 4px;
     color: white;
     font-weight: 700;
+    transition: 500ms;
 }
 
-header input{
+.button-animation {
+    transform: translateY(12px);
+}
+
+header input {
     width: 50%;
     margin-right: 2.5%;
+}
+
+input:focus {
+    outline: none;
+}
+
+.default-message {
+    position: relative;
+    color: red;
+    margin: 3px 0;
+    font-size: 0.8em !important;
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+}
+
+.second-call-message {
+    padding: 0 10%;
+    color: white;
+    transform: translateY(-58px);
+}
+
+.show {
+    opacity: 1;
+}
+
+.transition-off {
+    transition: none;
 }
 
 header button {
@@ -349,6 +386,19 @@ footer ul a {
         font-size: 0.85em;
     }
 
+    input {
+        padding-left: 5%;
+    }
+
+    .default-message {
+        display: block;
+        margin: 3px auto;
+        max-width: 500px;
+        text-align: left;
+        padding: 0;
+        transform: translateY(-68px);
+    }
+
     header form {
         display: flex;
         flex-direction: column;
@@ -358,7 +408,7 @@ footer ul a {
     header input, header button {
         width: 100%;
         margin: 0;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         max-width: 500px;
     }
 
@@ -436,13 +486,13 @@ footer ul a {
         margin-bottom: 20px;
     }
 
-    .second-call p {
+    .second-call .flex > div:first-child > p {
         margin: 10px 4px 0;
         font-size: 14px;
     }
 
     .second-call form {
-        max-width: 600px;
+        max-width: 500px;
         padding: 0;
         margin: auto;
     }
@@ -456,6 +506,7 @@ footer ul a {
         width: 100%;
         margin: 0;
         max-width: none;
+        margin-bottom: 10px;
     }
 
     .attribution .container {
