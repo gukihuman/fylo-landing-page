@@ -1,0 +1,482 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@400;700&display=swap')
+
+@mixin mobile
+    @media screen and (max-width: 768px)
+        @content
+
+$bright-blue: hsl(224, 93%, 58%)
+$light-gray: hsl(0, 0%, 75%)
+$light-gray-bg: #F8F8FE
+$desaturated-blue: hsl(238, 22%, 44%)
+$very-dark-blue: hsl(243, 87%, 12%)
+$moderate-cyan: hsl(170, 45%, 43%)
+
+*
+    box-sizing: border-box
+    margin: 0
+    padding: 0
+
+body
+    font-family: 'Open Sans', sans-serif
+    
+    @include mobile
+        text-align: center
+
+.resize-animation-stopper *
+    animation: none !important
+    transition: none !important
+
+img
+    max-width: 100%
+
+.container
+    padding: 4% 5%
+    margin: 0 auto
+    max-width: 100%
+    width: 1440px
+
+    @include mobile 
+        padding: 25px
+
+.flex
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+
+    & > div
+        flex: 1
+        gap: 1%
+    
+    @include mobile
+        flex-direction: column-reverse
+
+nav 
+    display: flex
+    align-items: center
+    justify-content: space-between
+    margin-bottom: 5%
+    font-family: 'Raleway', sans-serif
+
+    ul
+        display: flex
+        list-style-type: none
+        gap: 60px
+
+        a
+            white-space: nowrap
+            color: black
+            text-decoration: none
+
+        @include mobile
+            gap: 20px
+            font-size: 0.85em
+
+    & > img
+        @include mobile
+            width: 27%
+
+form
+    font-family: 'Raleway', sans-serif
+
+input
+    height: 45px
+    border: 1px solid
+    border-radius: 4px
+    padding-left: 15px
+
+    &::placeholder
+        color: $light-gray
+
+    @include mobile
+        padding-left: 5%
+
+button
+    background-color: $bright-blue
+    width: 190px
+    height: 45px
+    border: none
+    border-radius: 4px
+    color: white
+    font-weight: 700
+    transition: 500ms
+
+.button-animation
+    transform: translateY(12px)
+
+header
+
+    .flex > div:first-child
+        flex: 1.1
+
+    .flex img
+        @include mobile
+            margin: 30px 0 5%
+            padding: 5%
+            max-width: 350px
+            width: 100%
+
+    form
+        @include mobile
+            display: flex
+            flex-direction: column
+            align-items: center
+
+    input
+        width: 50%
+        margin-right: 2.5%
+
+        @include mobile
+            width: 100%
+            margin: 0
+            margin-bottom: 10px
+            max-width: 500px
+
+        &:focus
+            outline: none
+
+    button
+        max-width: 190px
+        width: 33%
+        padding: 1em
+
+        @include mobile
+            width: 100%
+            margin: 0
+            margin-bottom: 10px
+            max-width: 500px
+
+.default-message
+    position: relative
+    color: red
+    margin: 3px 0
+    font-size: 0.8em !important
+    opacity: 0
+    transition: opacity 500ms ease-in-out
+
+    @include mobile
+        display: block
+        margin: 3px auto
+        max-width: 500px
+        text-align: left
+        padding: 0
+        transform: translateY(-68px)
+
+.second-call-message
+    padding: 0 10%
+    color: white
+    transform: translateY(-58px)
+
+    @include mobile
+        display: block
+        margin: 3px auto
+        max-width: 500px
+        text-align: left
+        padding: 0
+        transform: translateY(-68px)
+
+.show
+    opacity: 1
+
+.transition-off
+    transition: none
+
+.second-call
+
+    .flex
+        @include mobile
+            flex-direction: column
+
+        div:first-child > p
+            @include mobile
+                margin: 10px 4px 0
+                font-size: 14px
+
+        div:last-child
+            @include mobile
+                width: 100%
+
+    form
+        padding: 0 10%
+        display: flex
+        flex-direction: column
+
+        @include mobile
+            max-width: 500px
+            padding: 0
+            margin: auto
+
+    input
+        width: 100%
+        margin-bottom: 2.5%
+
+        @include mobile
+            margin-bottom: 10px
+            margin-top: 15px
+
+        &:focus
+            outline: none
+
+    button
+        @include mobile
+            width: 100%
+            margin: 0
+            max-width: none
+            margin-bottom: 10px
+
+h1, h2, h3, h4
+    font-family: 'Raleway', sans-serif
+
+h1
+    font-size: 40px
+    line-height: 1.4
+
+    @include mobile
+        font-size: 26px
+
+h2
+    font-size: 40px
+    line-height: 1.4
+
+    @include mobile
+        font-size: 18px
+        margin-bottom: 20px
+
+h3
+    font-size: 30px
+
+    @include mobile
+        font-size: 20px
+        margin-bottom: 20px
+
+h4
+    font-size: 14px
+    letter-spacing: 0.05em
+
+    @include mobile
+        font-size: 12px
+        line-height: 0.7em
+
+p
+    line-height: 1.5
+    font-size: 18px
+    margin: 1.4em 0 1.5em
+    width: 88%
+
+    @include mobile
+        width: 100%
+        font-size: 15px
+        padding:
+            left: 3%
+            right: 3%
+            bottom: 5%
+
+section
+    padding: 40px 0
+
+.description
+    position: relative
+    background-color: $light-gray-bg
+    padding: 0 0 60px
+    margin-top: 220px
+   
+    @include mobile
+        margin-top: 50px
+
+    &::before
+        $size: 114px
+
+        height: $size
+        top: -$size
+        content: ''
+        position: absolute
+        background-image: url('../images/bg-curve-desktop.svg')
+        background-size: cover
+        width: 100%
+        left: 0
+
+        @include mobile
+            background-image: url('../images/bg-curve-mobile.svg')
+            height: 50px
+            top: -50px
+
+    .flex > div:first-child
+        flex: 1.2
+
+    .link
+        display: flex
+        width: fit-content
+        align-items: center
+        gap: 0.5em
+        border-bottom: 1px solid $moderate-cyan
+        padding: 0 0 0.2em
+
+        @include mobile
+            margin: 35px auto 0
+
+        a
+            color: $moderate-cyan
+            text-decoration: none
+
+    & .flex > div > img
+        @include mobile
+            margin-bottom: 70px
+            max-width: 350px
+            width: 100%
+
+    & .flex > div > p
+        @include mobile
+            margin: 12px 0
+            padding: 0
+
+.testimonial
+    background-color: white
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.1)
+    border-radius: 7px
+    padding: 30px 40px
+    margin-top: 60px
+    width: 65%
+
+    @include mobile
+        width: 90%
+        text-align: left
+        padding: 20px 12px 20px 30px
+        margin: 50px auto 0px
+
+    & > img
+        height: auto
+        width: 1.2em
+
+        @include mobile
+            width: 1em
+
+    p
+        margin: 10px 0
+        font-size: 16px
+        letter-spacing: 0.05em
+        width: 100%
+
+.user-info
+    display: flex
+    align-items: center
+    margin-top: 20px
+
+    @include mobile
+        margin: 0
+
+    img
+        border-radius: 50%
+        height: 40px
+        width: 40px
+        margin-right: 10px
+
+        @include mobile
+            height: 32px
+            width: 32px
+
+    small
+        font-size: 12px
+
+        @include mobile
+            font-size: 10px
+
+.second-call
+    background-color: $desaturated-blue
+    color: white
+
+    p
+        font-size: 17px
+
+    .flex
+        gap: 7%
+
+.attribution
+    background-color: $very-dark-blue
+    color: white
+
+    .container
+        @include mobile
+        padding: 10px 35px 20px
+
+        & > img
+            width: 140px
+            margin-bottom: 1.5em
+
+            @media mobile
+                margin-bottom: 30px
+
+    .flex
+        align-items: baseline
+
+        @include mobile
+            flex-direction: column
+            gap: 55px
+            align-items: center
+
+    .flex > div:first-child
+        flex: 1.6
+
+    .flex > div:last-child
+        flex: 1.2
+
+        @include mobile
+            align-self: center
+
+        ul
+            flex-direction: row
+
+    ul
+        display: flex
+        flex-direction: column
+        list-style-type: none
+        gap: 1em
+
+        li
+            display: flex
+            align-items: center
+
+            @include mobile
+                justify-content: center
+
+            a
+                width: 100px
+                color: white
+                text-decoration: none
+
+            img
+                margin-right: 10px
+                height: 100%
+
+    .circle
+        border: 1px solid white
+        border-radius: 50%
+        display: inline-flex
+        align-items: center
+        justify-content: center
+        height: 32px
+        width: 32px
+
+footer
+    background-color: $desaturated-blue
+
+    .container
+        padding: 1em 0 1.5em
+
+    ul
+        display: flex
+        justify-content: space-evenly
+        color: $light-gray
+        list-style-type: none
+
+        @include mobile
+            flex-direction: column
+            gap: 7px
+            font-size: 0.8em
+
+        a
+            margin-left: 3px
+            text-decoration: none
+            color: white
+            border-bottom: 1px solid white
+            padding: 0 0 0.1em
+            font-size: 1.1em
+            letter-spacing: 0.02em

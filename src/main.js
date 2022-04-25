@@ -1,4 +1,4 @@
-import "./style.scss";
+import "./style.sass";
 let body = require("./body.pug");
 document.querySelector("body").innerHTML = body();
 
