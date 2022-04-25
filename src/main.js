@@ -1,5 +1,9 @@
 import "./style.sass";
-let body = require("./body.pug");
+import { ResizeAnimationStopper } from "./modules/resize-anim-stop.mjs";
+
+ResizeAnimationStopper()
+
+const body = require("./body.pug");
 document.querySelector("body").innerHTML = body();
 
 const headerButton = document.querySelector("header button");
@@ -57,12 +61,3 @@ errorEmailEvent(
     secondCallMessage,
     true
 );
-
-let resizeTimer;
-window.addEventListener("resize", () => {
-    document.body.classList.add("resize-animation-stopper");
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-        document.body.classList.remove("resize-animation-stopper");
-    }, 100);
-});
