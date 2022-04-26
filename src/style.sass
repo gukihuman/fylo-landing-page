@@ -4,12 +4,18 @@
     @media screen and (max-width: 768px)
         @content
 
-$bright-blue: hsl(224, 93%, 58%)
-$light-gray: hsl(0, 0%, 75%)
+@mixin shadow
+    box-shadow: 0 0 10px rgb(0, 0, 0, 0.1)
+
+$bright-blue: #3065f8
+$bright-blue-lighten: adjust-color($bright-blue, $lightness: 15%)
+$light-gray: #bfbfbf
 $light-gray-bg: #F8F8FE
-$desaturated-blue: hsl(238, 22%, 44%)
-$very-dark-blue: hsl(243, 87%, 12%)
-$moderate-cyan: hsl(170, 45%, 43%)
+$desaturated-blue: #585989
+$very-dark-blue: #070439
+$moderate-cyan: #3c9f8f
+$moderate-cyan-hover: #72e0ce
+
 
 *
     box-sizing: border-box
@@ -95,6 +101,7 @@ input
         padding-left: 5%
 
 button
+    @include shadow
     background-color: $bright-blue
     width: 190px
     height: 45px
@@ -102,7 +109,11 @@ button
     border-radius: 4px
     color: white
     font-weight: 700
-    transition: 500ms
+    transition: transform 500ms
+
+    &:hover
+        cursor: pointer
+        background-color: adjust-color($bright-blue, $lightness: 10%, $hue: -5%)
 
 .button-animation
     transform: translateY(15px)
@@ -175,6 +186,7 @@ header
             margin-top: 15px
 
     input
+        @include shadow
         width: 100%
         margin-bottom: 10px
 
@@ -278,12 +290,21 @@ section
         border-bottom: 1px solid $moderate-cyan
         padding: 0 0 0.2em
 
-        @include mobile
-            margin: 35px auto 0
-
         a
             color: $moderate-cyan
             text-decoration: none
+
+        &:hover
+            border-bottom: 1px solid $moderate-cyan-hover
+
+            img
+                content: url('../images/icon-arrow-hover.svg')
+
+            a
+                color: $moderate-cyan-hover
+
+        @include mobile
+            margin: 35px auto 0
 
     & .flex > div > img
         @include mobile
@@ -297,8 +318,8 @@ section
             padding: 0
 
 .testimonial
+    @include shadow
     background-color: white
-    box-shadow: 0 0 10px rgb(0, 0, 0, 0.1)
     border-radius: 7px
     padding: 30px 40px
     margin-top: 60px
@@ -411,9 +432,11 @@ section
                 justify-content: center
 
             a
-                width: 100px
                 color: white
                 text-decoration: none
+
+                &:hover
+                    color: $bright-blue-lighten
 
             img
                 margin-right: 10px
@@ -427,6 +450,9 @@ section
         justify-content: center
         height: 32px
         width: 32px
+
+        &:hover
+            border: 1px solid $bright-blue-lighten
 
 footer
     background-color: $desaturated-blue

@@ -36,7 +36,6 @@ export function EmailErrorMessage(form) {
         this.message.style.color = this.color;
 
         this.button.addEventListener('click', () => {
-            console.log('eu');
             if (this.input.checkValidity() === false) {
                 this.input.style.border = "1px solid red";
                 this.message.style.opacity = "0";
