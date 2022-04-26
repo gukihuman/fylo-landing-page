@@ -52,3 +52,11 @@ window.addEventListener('resize', () => {
         headerButton.classList.remove("button-animation");
     };
 });
+
+window.addEventListener('scroll', () => {
+    sessionStorage.setItem('scroll-position', scrollY);
+});
+
+window.addEventListener('load', () => {
+    window.scrollTo(0, sessionStorage.getItem('scroll-position')) || 0
+});
