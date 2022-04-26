@@ -1,63 +1,54 @@
 import "./style.sass";
-import { ResizeAnimationStopper } from "./modules/resize-anim-stop.mjs";
-
-ResizeAnimationStopper()
-
 const body = require("./body.pug");
+import { resizeAnimationStopper } from "./modules/resize-anim-stop.mjs";
+import { removeInvalidMessage } from "./modules/remove-invalid-message.mjs";
+import { EmailErrorMessage } from "./modules/email-error-message.mjs";
+
 document.querySelector("body").innerHTML = body();
 
-const headerButton = document.querySelector("header button");
+resizeAnimationStopper();
+
 const headerInput = document.querySelector("header input");
-const headerParent = document.querySelector("header div.container div.flex div:first-child");
+removeInvalidMessage(headerInput);
 
-const secondCallButton = document.querySelector("section.second-call button");
-const secondCallInput = document.querySelector("section.second-call input");
-const secondCallParent = document.querySelector("section.second-call div.container div.flex div:last-child");
+const headerForm = document.querySelector("header form");
+let headerEmailErrorMessage = new EmailErrorMessage(headerForm);
+headerEmailErrorMessage.message.style.alignSelf = "baseline";
+headerEmailErrorMessage.gap = 3.5;
+headerEmailErrorMessage.add();
 
-const headerMessage = document.createElement("p");
-headerMessage.className = "default-message";
-headerMessage.innerText = "Please check your email";
-const secondCallMessage = headerMessage.cloneNode(true)
-secondCallMessage.classList.add("second-call-message");
+const secondCallInput = document.querySelector(".second-call input");
+removeInvalidMessage(secondCallInput);
 
+const secondCallForm = document.querySelector(".second-call form");
+let secondCallEmailErrorMessage = new EmailErrorMessage(secondCallForm);
+secondCallEmailErrorMessage.message.style.alignSelf = "baseline";
+secondCallEmailErrorMessage.gap = 3.5;
+secondCallEmailErrorMessage.color = "white";
+secondCallEmailErrorMessage.add();
 
-const errorEmailEvent = (
-    button, input, parent, message, animateButton
-    ) => {
-    parent.appendChild(message);
-    parent.style.transition = "500ms";
-    button.addEventListener('click', () => {
-        if (input.checkValidity() === false) {
-            input.style.border = "1px solid red";
-            message.classList.remove("show");
-            message.classList.add("transition-off");
-            setTimeout( () => {
-                message.classList.add("show");
-                message.classList.remove("transition-off");
-            }, 0);
-            if (animateButton || window.innerWidth <= 768) {
-                button.classList.add("button-animation");
-            }
-        } else {
-            input.style.border = "1px solid black";
-            message.classList.remove("show");
-            button.classList.remove("button-animation");
-        };
-    });
-};
+const headerButton = document.querySelector("header button");
+headerButton.addEventListener('click', () => {
+    if (headerInput.checkValidity() === false && window.innerWidth <= 768) {
+        headerButton.classList.add("button-animation");
+    } else {
+        headerButton.classList.remove("button-animation");
+    };
+});
 
-errorEmailEvent(
-    headerButton,
-    headerInput,
-    headerParent,
-    headerMessage,
-    false
-);
+const secondCallButton = document.querySelector(".second-call button");
+secondCallButton.addEventListener('click', () => {
+    if (secondCallInput.checkValidity() === false) {
+        secondCallButton.classList.add("button-animation");
+    } else {
+        secondCallButton.classList.remove("button-animation");
+    };
+});
 
-errorEmailEvent(
-    secondCallButton,
-    secondCallInput,
-    secondCallParent,
-    secondCallMessage,
-    true
-);
+window.addEventListener('resize', () => {
+    if (headerInput.checkValidity() === false && window.innerWidth <= 768) {
+        headerButton.classList.add("button-animation");
+    } else {
+        headerButton.classList.remove("button-animation");
+    };
+});

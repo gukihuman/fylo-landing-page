@@ -1,15 +1,16 @@
-export function ResizeAnimationStopper() {
+export function resizeAnimationStopper() {
 
-    let resizeTimer;
-    const resizeAnimatianStyle = document.createElement('style');
-    resizeAnimatianStyle.setAttribute('type', 'text/css');
-    resizeAnimatianStyle.innerHTML = `
-        .resize-animation-stopper * {
-            animation: none !important;
-            transition: none !important;
-        }
+    const resizeAnimationStyle = document.createElement('style');
+    resizeAnimationStyle.setAttribute('type', 'text/css');
+    resizeAnimationStyle.innerHTML = `
+    .resize-animation-stopper * {
+        animation: none !important;
+        transition: none !important;
+    }
     `;
-    document.getElementsByTagName('head')[0].appendChild(resizeAnimatianStyle);
+    document.getElementsByTagName('head')[0].appendChild(resizeAnimationStyle);
+    
+    let resizeTimer;
 
     window.addEventListener("resize", () => {
         document.body.classList.add("resize-animation-stopper");
@@ -18,4 +19,4 @@ export function ResizeAnimationStopper() {
             document.body.classList.remove("resize-animation-stopper");
         }, 100);
     });
-}
+};

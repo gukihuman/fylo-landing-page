@@ -46,6 +46,11 @@ img
     @include mobile
         flex-direction: column-reverse
 
+        *
+            margin:
+                left: auto
+                right: auto
+
 nav 
     display: flex
     align-items: center
@@ -69,10 +74,13 @@ nav
 
     & > img
         @include mobile
-            width: 27%
+            width: 90px
 
 form
     font-family: 'Raleway', sans-serif
+
+    @include mobile
+        max-width: 500px
 
 input
     height: 45px
@@ -97,7 +105,7 @@ button
     transition: 500ms
 
 .button-animation
-    transform: translateY(12px)
+    transform: translateY(15px)
 
 header
 
@@ -141,41 +149,6 @@ header
             margin-bottom: 10px
             max-width: 500px
 
-.default-message
-    position: relative
-    color: red
-    margin: 3px 0
-    font-size: 0.8em !important
-    opacity: 0
-    transition: opacity 500ms ease-in-out
-
-    @include mobile
-        display: block
-        margin: 3px auto
-        max-width: 500px
-        text-align: left
-        padding: 0
-        transform: translateY(-68px)
-
-.second-call-message
-    padding: 0 10%
-    color: white
-    transform: translateY(-58px)
-
-    @include mobile
-        display: block
-        margin: 3px auto
-        max-width: 500px
-        text-align: left
-        padding: 0
-        transform: translateY(-68px)
-
-.show
-    opacity: 1
-
-.transition-off
-    transition: none
-
 .second-call
 
     .flex
@@ -199,15 +172,14 @@ header
         @include mobile
             max-width: 500px
             padding: 0
-            margin: auto
+            margin-top: 15px
 
     input
         width: 100%
-        margin-bottom: 2.5%
+        margin-bottom: 10px
 
         @include mobile
             margin-bottom: 10px
-            margin-top: 15px
 
         &:focus
             outline: none
@@ -358,6 +330,11 @@ section
 
     @include mobile
         margin: 0
+
+        *
+            margin:
+                left: 0
+                right: 0
 
     img
         border-radius: 50%
