@@ -74,6 +74,9 @@ nav
             color: black
             text-decoration: none
 
+            &:hover
+                color: $bright-blue-lighten
+
         @include mobile
             gap: 20px
             font-size: 0.85em
@@ -295,6 +298,7 @@ section
             text-decoration: none
 
         &:hover
+            cursor: pointer
             border-bottom: 1px solid $moderate-cyan-hover
 
             img
