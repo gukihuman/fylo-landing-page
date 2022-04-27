@@ -1,52 +1,51 @@
 import "./style.sass";
 const body = require("./body.pug");
 import { resizeAnimationStopper } from "./modules/resize-anim-stop.mjs";
-import { removeInvalidMessage } from "./modules/remove-invalid-message.mjs";
-import { EmailErrorMessage } from "./modules/email-error-message.mjs";
+import { CustomValidation } from "./modules/custom-validation.mjs";
 
 document.querySelector("body").innerHTML = body();
 
-resizeAnimationStopper();
-
 const headerInput = document.querySelector("header input");
-removeInvalidMessage(headerInput);
-
 const headerForm = document.querySelector("header form");
-let headerEmailErrorMessage = new EmailErrorMessage(headerForm);
-headerEmailErrorMessage.message.style.alignSelf = "baseline";
-headerEmailErrorMessage.gap = 3.5;
-headerEmailErrorMessage.add();
+class headerCustomValidation extends CustomValidation {
+    constructor(form) {
+        super(form);
+        this.message.style.alignSelf = "baseline";
+    };
+};
+let headerValidation = new headerCustomValidation(headerForm);
+headerValidation.initiate()
 
 const secondCallInput = document.querySelector(".second-call input");
-removeInvalidMessage(secondCallInput);
-
 const secondCallForm = document.querySelector(".second-call form");
-let secondCallEmailErrorMessage = new EmailErrorMessage(secondCallForm);
-secondCallEmailErrorMessage.message.style.alignSelf = "baseline";
-secondCallEmailErrorMessage.gap = 3.5;
-secondCallEmailErrorMessage.color = "white";
-secondCallEmailErrorMessage.add();
-
-const headerButton = document.querySelector("header button");
-headerButton.addEventListener('click', () => {
-    if (headerInput.checkValidity() === false && window.innerWidth <= 768) {
-        headerButton.classList.add("button-animation");
-    } else {
-        headerButton.classList.remove("button-animation");
+class secondCallCustomValidation extends CustomValidation {
+    constructor(form) {
+        super(form);
+        this.message.style.alignSelf = "baseline";
+        this.colorError = "white";
+        this.color = "white";
     };
+};
+let secondCallValidation = new secondCallCustomValidation(secondCallForm);
+secondCallValidation.initiate()
+
+let headerSubmitted = false;
+
+let headerButton = headerForm.querySelector("button");
+headerForm.addEventListener('submit', () => {
+    if (window.innerWidth <= 768) {
+        headerButton.classList.add("button-animation");
+    };
+    headerSubmitted = true;
 });
 
-const secondCallButton = document.querySelector(".second-call button");
-secondCallButton.addEventListener('click', () => {
-    if (secondCallInput.checkValidity() === false) {
-        secondCallButton.classList.add("button-animation");
-    } else {
-        secondCallButton.classList.remove("button-animation");
-    };
+let secondCallButton = secondCallForm.querySelector("button");
+secondCallForm.addEventListener('submit', () => {
+    secondCallButton.classList.add("button-animation");
 });
 
 window.addEventListener('resize', () => {
-    if (headerInput.checkValidity() === false && window.innerWidth <= 768) {
+    if (headerSubmitted === true && window.innerWidth <= 768) {
         headerButton.classList.add("button-animation");
     } else {
         headerButton.classList.remove("button-animation");
@@ -60,3 +59,5 @@ window.addEventListener('scroll', () => {
 window.addEventListener('load', () => {
     window.scrollTo(0, sessionStorage.getItem('scroll-position')) || 0
 });
+
+resizeAnimationStopper();
