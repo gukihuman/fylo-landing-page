@@ -2,10 +2,10 @@ import "./style.sass";
 const body = require("./body.pug");
 import { resizeAnimationStopper } from "./modules/resize-anim-stop.mjs";
 import { CustomValidation } from "./modules/custom-validation.mjs";
+import { saveScrollPosition } from "./modules/save-scroll-position.mjs";
 
 document.querySelector("body").innerHTML = body();
 
-const headerInput = document.querySelector("header input");
 const headerForm = document.querySelector("header form");
 class headerCustomValidation extends CustomValidation {
     constructor(form) {
@@ -16,7 +16,6 @@ class headerCustomValidation extends CustomValidation {
 let headerValidation = new headerCustomValidation(headerForm);
 headerValidation.initiate()
 
-const secondCallInput = document.querySelector(".second-call input");
 const secondCallForm = document.querySelector(".second-call form");
 class secondCallCustomValidation extends CustomValidation {
     constructor(form) {
@@ -52,12 +51,6 @@ window.addEventListener('resize', () => {
     };
 });
 
-window.addEventListener('scroll', () => {
-    sessionStorage.setItem('scroll-position', scrollY);
-});
-
-window.addEventListener('load', () => {
-    window.scrollTo(0, sessionStorage.getItem('scroll-position')) || 0
-});
+saveScrollPosition();
 
 resizeAnimationStopper();
