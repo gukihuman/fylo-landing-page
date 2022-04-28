@@ -14,7 +14,7 @@ class headerCustomValidation extends CustomValidation {
     };
 };
 let headerValidation = new headerCustomValidation(headerForm);
-headerValidation.initiate()
+headerValidation.render()
 
 const secondCallForm = document.querySelector(".second-call form");
 class secondCallCustomValidation extends CustomValidation {
@@ -26,7 +26,7 @@ class secondCallCustomValidation extends CustomValidation {
     };
 };
 let secondCallValidation = new secondCallCustomValidation(secondCallForm);
-secondCallValidation.initiate()
+secondCallValidation.render()
 
 let headerSubmitted = false;
 

@@ -53,7 +53,7 @@ export class CustomValidation {
         this.message = document.createElement("div");
     };
 
-    initiate = () => {
+    render = () => {
         this.form.setAttribute("novalidate", '');
         this.message.classList.add('error-message');
         this.form.insertBefore(this.message, this.input.nextSibling);
