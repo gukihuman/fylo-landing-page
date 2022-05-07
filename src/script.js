@@ -1,10 +1,7 @@
 import "./style.sass";
-const body = require("./body.pug");
 import { resizeAnimationStopper } from "./modules/resize-anim-stop.mjs";
 import { CustomValidation } from "./modules/custom-validation.mjs";
 import { saveScrollPosition } from "./modules/save-scroll-position.mjs";
-
-document.querySelector("body").innerHTML = body();
 
 const headerForm = document.querySelector("header form");
 class headerCustomValidation extends CustomValidation {
@@ -49,6 +46,14 @@ window.addEventListener('resize', () => {
     } else {
         headerButton.classList.remove("button-animation");
     };
+});
+
+document.querySelector('body').style.opacity = '0%';
+
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        document.querySelector('body').style.opacity = '100%';
+    }, 0);
 });
 
 saveScrollPosition();

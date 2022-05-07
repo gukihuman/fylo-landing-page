@@ -14,8 +14,6 @@ $light-gray-bg: #F8F8FE
 $desaturated-blue: #585989
 $very-dark-blue: #070439
 $moderate-cyan: #3c9f8f
-$moderate-cyan-hover: #72e0ce
-
 
 *
     box-sizing: border-box
@@ -272,13 +270,13 @@ section
         top: -$size
         content: ''
         position: absolute
-        background-image: url('../images/bg-curve-desktop.svg')
+        background-image: url('./images/bg-curve-desktop.svg')
         background-size: cover
         width: 100%
         left: 0
 
         @include mobile
-            background-image: url('../images/bg-curve-mobile.svg')
+            background-image: url('./images/bg-curve-mobile.svg')
             height: 50px
             top: -50px
 
@@ -299,13 +297,7 @@ section
 
         &:hover
             cursor: pointer
-            border-bottom: 1px solid $moderate-cyan-hover
-
-            img
-                content: url('../images/icon-arrow-hover.svg')
-
-            a
-                color: $moderate-cyan-hover
+            filter: brightness(140%)
 
         @include mobile
             margin: 35px auto 0

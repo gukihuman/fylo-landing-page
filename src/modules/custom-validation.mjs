@@ -54,23 +54,25 @@ export class CustomValidation {
     };
 
     render = () => {
-        this.form.setAttribute("novalidate", '');
-        this.message.classList.add('error-message');
-        this.form.insertBefore(this.message, this.input.nextSibling);
-        this.form.style.position = "relative";
-        this.message.style.top = `${this.input.clientHeight + this.gap}px`;
-        
-        this.form.addEventListener('submit', (event) => {
-            if (this.checkEmail(this.input) === false) {
-                event.preventDefault();
-                this.#resetAnimation(this.message);
-                this.#applyStyling(this.inputBorderError, this.textError, this.colorError)
-            } else {
-                this.submit();
-                event.preventDefault();
-                this.#resetAnimation(this.message);
-                this.#applyStyling(this.inputBorder, this.text, this.color)
-            };
+        window.addEventListener('load', () => {
+            this.form.setAttribute("novalidate", '');
+            this.message.classList.add('error-message');
+            this.form.insertBefore(this.message, this.input.nextSibling);
+            this.form.style.position = "relative";
+            this.message.style.top = `${this.input.clientHeight + this.gap}px`;
+            
+            this.form.addEventListener('submit', (event) => {
+                if (this.checkEmail(this.input) === false) {
+                    event.preventDefault();
+                    this.#resetAnimation(this.message);
+                    this.#applyStyling(this.inputBorderError, this.textError, this.colorError)
+                } else {
+                    this.submit();
+                    event.preventDefault();
+                    this.#resetAnimation(this.message);
+                    this.#applyStyling(this.inputBorder, this.text, this.color)
+                };
+            });
         });
     };
 
