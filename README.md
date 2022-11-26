@@ -39,6 +39,7 @@ Users should be able to:
 ### Built with
 
 - JavaScript
+- Webpack
 - SASS
 - Pug
 
@@ -54,19 +55,20 @@ import { CustomValidation } from "./modules/custom-validation.mjs";
 const form = document.querySelector("form");
 
 class customForm extends CustomValidation {
-    constructor(form) {
-        super(form);
-        this.text = "Submitted successfully!";
-        this.color = "white";
-        this.textError = "Please check your email";
-        this.colorError = "red";
-    };
-};
+  constructor(form) {
+    super(form);
+    this.text = "Submitted successfully!";
+    this.color = "white";
+    this.textError = "Please check your email";
+    this.colorError = "red";
+  }
+}
 
 let formValidation = new customForm(form);
 
-formValidation.render()
+formValidation.render();
 ```
+
 \
 I also learned how to set up the Webpack with Pug and Sass. Both the development with HMR and the clean production with fully compiled .css and .html files. I used separate Webpack configuration files:
 
@@ -75,55 +77,57 @@ webpack.common.js
 webpack.prod.js
 webpack.dev.js
 ```
+
 \
 webpack.common.js
+
 ```js
-const path = require('path');
-const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require("path");
+const HtmlWebpackPugPlugin = require("html-webpack-pug-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-    output: {
-        filename: './bundle.js',
-        path: path.resolve(__dirname, 'public')
-    },
-    plugins: [
-        new MiniCssExtractPlugin({
-            filename: './style.css',
-            chunkFilename: '[id].css',
-        }),
-        new HtmlWebpackPlugin({
-            template: './src/index.pug',
-            inject: 'body',
-        }),
-        new HtmlWebpackPugPlugin(),
-    ],
-    module: {
-        rules: [
-            {
-                test: /\.pug$/,
-                use: ['pug-loader']
+  output: {
+    filename: "./bundle.js",
+    path: path.resolve(__dirname, "public"),
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: "./style.css",
+      chunkFilename: "[id].css",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./src/index.pug",
+      inject: "body",
+    }),
+    new HtmlWebpackPugPlugin(),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.pug$/,
+        use: ["pug-loader"],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          {
+            loader: "css-loader",
+            options: {
+              url: false,
             },
-            {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                    },
-                    {
-                        loader: "css-loader",
-                        options: {
-                            url: false
-                        },
-                    },
-                    {
-                        loader: "sass-loader",
-                    },
-                ]
-            },
+          },
+          {
+            loader: "sass-loader",
+          },
         ],
-    },
+      },
+    ],
+  },
 };
 ```
 
@@ -131,12 +135,12 @@ module.exports = {
 webpack.prod.js
 
 ```js
-const { merge } = require('webpack-merge');
-const common = require('./webpack.common.js');
+const { merge } = require("webpack-merge");
+const common = require("./webpack.common.js");
 
 module.exports = merge(common, {
-    mode: 'production',
-    entry: './src/script.js',
+  mode: "production",
+  entry: "./src/script.js",
 });
 ```
 
@@ -154,23 +158,21 @@ const index = require("./index.pug");
 webpack.dev.js
 
 ```js
-const path = require('path');
-const { merge } = require('webpack-merge');
-const common = require('./webpack.common.js');
+const path = require("path");
+const { merge } = require("webpack-merge");
+const common = require("./webpack.common.js");
 
 module.exports = merge(common, {
-    mode: 'development',
-    entry: [
-        './src/script.js',
-        './src/dev.js',
-    ],
-    devServer: {
-        port: '8080',
-        static: path.resolve(__dirname, 'public'),
-        hot: true
-    },
+  mode: "development",
+  entry: ["./src/script.js", "./src/dev.js"],
+  devServer: {
+    port: "8080",
+    static: path.resolve(__dirname, "public"),
+    hot: true,
+  },
 });
 ```
+
 \
 Here is the plugins that I used:
 
